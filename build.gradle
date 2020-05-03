@@ -1,0 +1,31 @@
+defaultTasks 'clean', 'screamCompile'
+
+allprojects {
+    group = 'org.screamingsandals.misc'
+    version = '1.0.0'
+}
+
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            name 'screamingsandals'
+            url = 'https://repo.screamingsandals.org'
+        }
+    }
+    dependencies {
+        classpath 'org.screamingsandals.gradle.builder:screaming-plugin-builder:1.0.3'
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.screamingsandals.gradle.builder'
+
+    dependencies {
+        compileOnly paper()
+        compileOnly waterfall()
+    }
+
+    sourceCompatibility = '1.8'
+}
