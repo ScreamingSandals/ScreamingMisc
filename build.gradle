@@ -18,14 +18,12 @@ buildscript {
     }
 }
 
-subprojects {
-    apply plugin: 'java'
-    apply plugin: 'org.screamingsandals.gradle.builder'
+apply plugin: 'java'
+apply plugin: 'org.screamingsandals.gradle.builder'
 
-    dependencies {
-        compileOnly paper()
-        compileOnly waterfall()
-    }
-
-    sourceCompatibility = '1.8'
+dependencies {
+    compileOnly paper()
+    compileOnly waterfall()
 }
+
+sourceCompatibility = '1.8'
