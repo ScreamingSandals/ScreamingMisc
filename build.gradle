@@ -65,3 +65,10 @@ project(':univocity') {
         implementation 'com.univocity:univocity-parsers:' + version
     }
 }
+
+project(':lettuce-core') {
+    version = '5.2.2.RELEASE'
+    dependencies {
+        implementation 'io.lettuce:lettuce-core:' + version
+    }
+}
