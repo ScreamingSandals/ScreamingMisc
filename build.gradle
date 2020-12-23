@@ -53,7 +53,7 @@ subprojects {
 }
 
 project(':groovy') {
-    version = '3.0.3'
+    version = '3.0.7'
     dependencies {
         shade 'org.codehaus.groovy:groovy:' + version
     }
@@ -70,5 +70,12 @@ project(':lettuce-core') {
     version = '5.2.2.RELEASE'
     dependencies {
         shade 'io.lettuce:lettuce-core:' + version
+    }
+}
+
+project(':kotlin') {
+    version = '1.4.21'
+    dependencies {
+        shade 'org.jetbrains.kotlin:kotlin-stdlib:' + version
     }
 }
