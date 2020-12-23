@@ -76,6 +76,8 @@ project(':lettuce-core') {
 project(':kotlin') {
     version = '1.4.21'
     dependencies {
-        shade 'org.jetbrains.kotlin:kotlin-stdlib:' + version
+        shade 'org.jetbrains.kotlin:kotlin-script-runtime:' + version
+        shade 'org.jetbrains.kotlin:kkotlin-script-util:' + version
+        shade 'org.jetbrains.kotlin:kotlin-compiler-embeddable:' + version
     }
 }
