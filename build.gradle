@@ -1,5 +1,7 @@
 defaultTasks 'clean', 'screamCompile'
 
+import org.apache.tools.ant.filters.*
+
 allprojects {
     group = 'org.screamingsandals.misc'
     version = '1.0.0'
@@ -14,13 +16,25 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'org.screamingsandals.gradle.builder:screaming-plugin-builder:1.0.29'
+        classpath 'org.screamingsandals.gradle.builder:screaming-plugin-builder:1.0.41'
     }
 }
 
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'org.screamingsandals.gradle.builder'
+    apply plugin: 'org.screamingsandals.gradle.builder.lite'
+
+    repositories {
+        papermc()
+    }
+
+    processResources {
+        filter ReplaceTokens, tokens: [
+                "version": project.version,
+                "name": project.name,
+                "group": project.group
+        ]
+    }
 
     dependencies {
         compileOnly paper()
@@ -29,55 +43,32 @@ subprojects {
 
     sourceCompatibility = '1.8'
 
+    enableShadowPlugin()
+
     shadowJar {
         relocate project.group, project.group + '.' + project.name
-    }
-
-    enableSpigradleSpigot()
-
-    spigot {
-        main = project.group + '.' + project.name + '.MiscBukkitPlugin'
-        name = 'ScreamingLibrary_' + project.name
-        authors = ['ScreamingSandals']
-        apiVersion = '1.13'
-        load = STARTUP
-    }
-
-    enableSpigradleBungee()
-
-    bungee {
-        main = project.group + '.' + project.name + '.MiscBungeePlugin'
-        name = 'ScreamingLibrary_' + project.name
-        author = 'ScreamingSandals'
     }
 }
 
 project(':groovy') {
     version = '3.0.7'
     dependencies {
-        shade 'org.codehaus.groovy:groovy:' + version
+        implementation 'org.codehaus.groovy:groovy:' + version
     }
 }
 
 project(':univocity') {
     version = '2.8.3'
     dependencies {
-        shade 'com.univocity:univocity-parsers:' + version
+        implementation 'com.univocity:univocity-parsers:' + version
     }
 }
 
-project(':lettuce-core') {
-    version = '5.2.2.RELEASE'
-    dependencies {
-        shade 'io.lettuce:lettuce-core:' + version
-    }
-}
-
-project(':kotlin') {
+/*project(':kotlin') {
     version = '1.4.21'
     dependencies {
         shade 'org.jetbrains.kotlin:kotlin-script-runtime:' + version
         shade 'org.jetbrains.kotlin:kkotlin-script-util:' + version
         shade 'org.jetbrains.kotlin:kotlin-compiler-embeddable:' + version
     }
-}
+}*/

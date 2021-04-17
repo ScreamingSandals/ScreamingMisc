@@ -1,6 +1,6 @@
 rootProject.name = 'ScreamingMisc'
 
-[':groovy', ':univocity', ':lettuce-core', ':kotlin'].forEach {
+[':groovy', ':univocity'].forEach {
     include(it)
     project(it).projectDir = file('common')
 }

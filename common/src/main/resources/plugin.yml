@@ -1,0 +1,6 @@
+name: ScreamingLibrary_@name@
+main: @group@.@name@.MiscBukkitPlugin
+version: "@version@"
+author: ScreamingSandals
+api-version: 1.13
+load: POSTWORLD

@@ -1,0 +1,4 @@
+name: ScreamingLibrary_@name@
+main: @group@.@name@.MiscBungeePlugin
+version: "@version@"
+author: ScreamingSandals
