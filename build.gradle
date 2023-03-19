@@ -51,7 +51,7 @@ subprojects {
 }
 
 project(':groovy') {
-    version = '3.0.7'
+    version = '3.0.16'
     dependencies {
         implementation 'org.codehaus.groovy:groovy:' + version
     }
