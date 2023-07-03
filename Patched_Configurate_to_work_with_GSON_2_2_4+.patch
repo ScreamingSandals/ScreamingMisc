@@ -1,0 +1,19 @@
+Subject: [PATCH] Patched Configurate 4.1.2 to work with GSON 2.2.4+
+---
+Index: format/gson/src/main/java/org/spongepowered/configurate/gson/GsonVisitor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/format/gson/src/main/java/org/spongepowered/configurate/gson/GsonVisitor.java b/format/gson/src/main/java/org/spongepowered/configurate/gson/GsonVisitor.java
+--- a/format/gson/src/main/java/org/spongepowered/configurate/gson/GsonVisitor.java	(revision d838fee5d8e834ba9fd4d1c4fe0f8214d6dc90fc)
++++ b/format/gson/src/main/java/org/spongepowered/configurate/gson/GsonVisitor.java	(date 1688411388999)
+@@ -100,7 +100,7 @@
+             } else if (value instanceof Integer) {
+                 writer.value((Integer) value);
+             } else if (value instanceof Boolean) {
+-                writer.value((Boolean) value);
++                writer.value(((Boolean) value).booleanValue());
+             } else {
+                 writer.value(value.toString());
+             }
